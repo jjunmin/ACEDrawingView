@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< e91d62f7ddcc3f35531c9ee063b1f468ab0fd7a1
 		140DDF81FBD5EBE8EF7826AC /* libPods-ACEDrawingViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFFBBC0CDE03617564D8F48 /* libPods-ACEDrawingViewDemo.a */; };
 		50F58C571D7F0FCF0050A4A0 /* ACEDrawingViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F58C561D7F0FCF0050A4A0 /* ACEDrawingViewTest.m */; };
+=======
+		62B998F31C7AFD5400DFB5A6 /* SDMiSaeng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */; };
+		62B998F41C7AFD5D00DFB5A6 /* SDMiSaeng.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */; };
+>>>>>>> use custom font
 		6D796B7B19184BBA0045456F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D796B7A19184BBA0045456F /* CoreText.framework */; };
 		7B5AD3FB169A072800904C6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5AD3FA169A072800904C6B /* UIKit.framework */; };
 		7B5AD3FD169A072800904C6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5AD3FC169A072800904C6B /* Foundation.framework */; };
@@ -36,10 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< e91d62f7ddcc3f35531c9ee063b1f468ab0fd7a1
 		0EFFBBC0CDE03617564D8F48 /* libPods-ACEDrawingViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACEDrawingViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F58C4C1D7F0F4B0050A4A0 /* ACEDrawingViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACEDrawingViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F58C561D7F0FCF0050A4A0 /* ACEDrawingViewTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDrawingViewTest.m; sourceTree = "<group>"; };
 		50F58C581D7F0FE60050A4A0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+=======
+		62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDMiSaeng.ttf; sourceTree = "<group>"; };
+>>>>>>> use custom font
 		6D796B7A19184BBA0045456F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7B5AD3F6169A072800904C6B /* ACEDrawingViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACEDrawingViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5AD3FA169A072800904C6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -102,6 +111,7 @@
 		7B5AD3EB169A072800904C6B = {
 			isa = PBXGroup;
 			children = (
+				62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */,
 				7B5AD400169A072800904C6B /* ACEDrawingViewDemo */,
 				50F58C4D1D7F0F4B0050A4A0 /* ACEDrawingViewDemoTests */,
 				7B5AD3F9169A072800904C6B /* Frameworks */,
@@ -261,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B998F31C7AFD5400DFB5A6 /* SDMiSaeng.ttf in Resources */,
 				7B5AD405169A072800904C6B /* InfoPlist.strings in Resources */,
 				7B5AD40D169A072800904C6B /* Default.png in Resources */,
 				7B5AD40F169A072800904C6B /* Default@2x.png in Resources */,
@@ -377,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62B998F41C7AFD5D00DFB5A6 /* SDMiSaeng.ttf in Sources */,
 				7B5AD407169A072800904C6B /* main.m in Sources */,
 				7B5AD40B169A072800904C6B /* ACEAppDelegate.m in Sources */,
 				7B5AD414169A072800904C6B /* ACEViewController.m in Sources */,
@@ -534,6 +546,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D6801415A1667A65D59C4F83 /* Pods-ACEDrawingViewDemo.debug.xcconfig */;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACEDrawingViewDemo/ACEDrawingViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "ACEDrawingViewDemo/ACEDrawingViewDemo-Info.plist";
@@ -547,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD8605C60ECCA761EB40D225 /* Pods-ACEDrawingViewDemo.release.xcconfig */;
 			buildSettings = {
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ACEDrawingViewDemo/ACEDrawingViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "ACEDrawingViewDemo/ACEDrawingViewDemo-Info.plist";

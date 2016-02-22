@@ -396,10 +396,115 @@
     [self touchesEnded:touches withEvent:event];
 }
 
-- (void)snapCurrentPointToEdges
-{
-    int xMax = self.frame.size.width;
-    int yMax = self.frame.size.height;
+
+#pragma mark - Text Entry
+
+- (void)initializeTextBox:(CGPoint)startingPoint WithMultiline:(BOOL)multiline {
+    if (!self.textView) {
+        self.textView = [[UITextView alloc] init];
+        self.textView.delegate = self;
+        if(!multiline) {
+            self.textView.returnKeyType = UIReturnKeyDone;
+        }
+        self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.textView.backgroundColor = [UIColor clearColor];
+        self.textView.layer.borderWidth = 1.0f;
+        self.textView.layer.borderColor = [[UIColor grayColor] CGColor];
+        self.textView.layer.cornerRadius = 8;
+        [self.textView setContentInset: UIEdgeInsetsZero];
+        
+        
+        [self addSubview:self.textView];
+    }
+    
+    int calculatedFontSize = self.lineWidth * 3; //3 is an approximate size factor
+    [self.textView setFont:[UIFont fontWithName:@"Sandoll MiSaeng" size:calculatedFontSize]];
+    self.textView.textColor = self.lineColor;
+    self.textView.layer.shadowColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.8]);
+    
+    self.textView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.textView.layer.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    self.textView.layer.shadowOpacity = 1.0f;
+    self.textView.layer.shadowRadius = 5.0f;
+
+    self.textView.alpha = self.lineAlpha;
+    
+    int defaultWidth = 200;
+    int defaultHeight = calculatedFontSize * 2;
+    int initialYPosition = startingPoint.y - (defaultHeight/2);
+    
+    CGRect frame = CGRectMake(startingPoint.x, initialYPosition, defaultWidth, defaultHeight);
+    frame = [self adjustFrameToFitWithinDrawingBounds:frame];
+    
+    self.textView.frame = frame;
+    self.textView.text = @"";
+    self.textView.hidden = NO;
+}
+
+- (void) startTextEntry {
+    if (!self.textView.hidden) {
+        [self.textView becomeFirstResponder];
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if(([self.currentTool class] == [ACEDrawingTextTool  class]) && [text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+-(void)textViewDidChange:(UITextView *)textView {
+    CGRect frame = self.textView.frame;
+    if (self.textView.contentSize.height > frame.size.height) {
+        frame.size.height = self.textView.contentSize.height;
+    }
+    
+    self.textView.frame = frame;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    [self commitAndHideTextEntry];
+}
+
+-(void)resizeTextViewFrame: (CGPoint)adjustedSize {
+    
+    int minimumAllowedHeight = self.textView.font.pointSize * 2;
+    int minimumAllowedWidth = self.textView.font.pointSize * 0.5;
+    
+    CGRect frame = self.textView.frame;
+    
+    //adjust height
+    int adjustedHeight = adjustedSize.y - self.textView.frame.origin.y;
+    if (adjustedHeight > minimumAllowedHeight) {
+        frame.size.height = adjustedHeight;
+    }
+    
+    //adjust width
+    int adjustedWidth = adjustedSize.x - self.textView.frame.origin.x;
+    if (adjustedWidth > minimumAllowedWidth) {
+        frame.size.width = adjustedWidth;
+    }
+    frame = [self adjustFrameToFitWithinDrawingBounds:frame];
+    
+    self.textView.frame = frame;
+}
+
+- (CGRect)adjustFrameToFitWithinDrawingBounds: (CGRect)frame {
+    
+    //check that the frame does not go beyond bounds of parent view
+    if ((frame.origin.x + frame.size.width) > self.frame.size.width) {
+        frame.size.width = self.frame.size.width - frame.origin.x;
+    }
+    if ((frame.origin.y + frame.size.height) > self.frame.size.height) {
+        frame.size.height = self.frame.size.height - frame.origin.y;
+    }
+    return frame;
+}
+
+- (void)commitAndHideTextEntry {
+    [self.textView resignFirstResponder];
     
     if (currentPoint.x < self.edgeSnapThreshold) {
         currentPoint.x = 0;
