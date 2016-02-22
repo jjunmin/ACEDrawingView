@@ -358,7 +358,7 @@
         [self.textView setContentInset: UIEdgeInsetsZero];
         
         
-        [self addSubview:self.textView];
+         [self addSubview:self.textView];
     }
     
     int calculatedFontSize = self.lineWidth * 3; //3 is an approximate size factor
