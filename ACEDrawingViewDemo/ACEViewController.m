@@ -29,6 +29,7 @@
     
     // start with a black pen
     self.lineWidthSlider.value = self.drawingView.lineWidth;
+    self.drawingView.backgroundColor = [UIColor grayColor];
     
     // init the preview image
     self.previewImageView.layer.borderColor = [[UIColor blackColor] CGColor];
@@ -99,19 +100,19 @@
             self.colorButton.title = [actionSheet buttonTitleAtIndex:buttonIndex];
             switch (buttonIndex) {
                 case 0:
-                    self.drawingView.lineColor = [UIColor blackColor];
+                    self.drawingView.lineColor = [UIColor whiteColor];
                     break;
                     
                 case 1:
-                    self.drawingView.lineColor = [UIColor redColor];
+                    self.drawingView.lineColor = [UIColor whiteColor];
                     break;
                     
                 case 2:
-                    self.drawingView.lineColor = [UIColor greenColor];
+                    self.drawingView.lineColor = [UIColor whiteColor];
                     break;
                     
                 case 3:
-                    self.drawingView.lineColor = [UIColor blueColor];
+                    self.drawingView.lineColor = [UIColor whiteColor];
                     break;
             }
             

@@ -362,9 +362,15 @@
     }
     
     int calculatedFontSize = self.lineWidth * 3; //3 is an approximate size factor
-    
-    [self.textView setFont:[UIFont systemFontOfSize:calculatedFontSize]];
+    [self.textView setFont:[UIFont fontWithName:@"Sandoll MiSaeng" size:calculatedFontSize]];
     self.textView.textColor = self.lineColor;
+    self.textView.layer.shadowColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.8]);
+    
+    self.textView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    self.textView.layer.shadowOffset = CGSizeMake(0.5f, 0.5f);
+    self.textView.layer.shadowOpacity = 1.0f;
+    self.textView.layer.shadowRadius = 5.0f;
+
     self.textView.alpha = self.lineAlpha;
     
     int defaultWidth = 200;
