@@ -260,37 +260,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (self.textView && !self.textView.hidden) {
-        [self commitAndHideTextEntry];
-        return;
-    }
-    
-    // add the first touch
-    UITouch *touch = [touches anyObject];
-    previousPoint1 = [touch previousLocationInView:self];
-    currentPoint = [touch locationInView:self];
-    
-    // init the bezier path
-    self.currentTool = [self toolWithCurrentSettings];
-    self.currentTool.lineWidth = self.lineWidth;
-    self.currentTool.lineColor = self.lineColor;
-    self.currentTool.lineAlpha = self.lineAlpha;
-    
-    if ([self.currentTool class] == [ACEDrawingTextTool class]) {
-        [self initializeTextBox:currentPoint WithMultiline:NO];
-    } else if([self.currentTool class] == [ACEDrawingMultilineTextTool class]) {
-        [self initializeTextBox:currentPoint WithMultiline:YES];
-    } else {
-        [self.pathArray addObject:self.currentTool];
-        
-        [self.currentTool setInitialPoint:currentPoint];
-    }
-    
-    // call the delegate
-    if ([self.delegate respondsToSelector:@selector(drawingView:willBeginDrawUsingTool:)]) {
-        [self.delegate drawingView:self willBeginDrawUsingTool:self.currentTool];
-    }
-}
+  }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -324,6 +294,40 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+    if (self.textView && !self.textView.hidden) {
+        [self commitAndHideTextEntry];
+        return;
+    }
+    
+    // add the first touch
+    UITouch *touch = [touches anyObject];
+    previousPoint1 = [touch previousLocationInView:self];
+    currentPoint = [touch locationInView:self];
+    
+    // init the bezier path
+    self.currentTool = [self toolWithCurrentSettings];
+    self.currentTool.lineWidth = self.lineWidth;
+    self.currentTool.lineColor = self.lineColor;
+    self.currentTool.lineAlpha = self.lineAlpha;
+    
+    if ([self.currentTool class] == [ACEDrawingTextTool class]) {
+        [self initializeTextBox:currentPoint WithMultiline:NO];
+    } else if([self.currentTool class] == [ACEDrawingMultilineTextTool class]) {
+        [self initializeTextBox:currentPoint WithMultiline:YES];
+    } else {
+        [self.pathArray addObject:self.currentTool];
+        
+        [self.currentTool setInitialPoint:currentPoint];
+    }
+    
+    // call the delegate
+    if ([self.delegate respondsToSelector:@selector(drawingView:willBeginDrawUsingTool:)]) {
+        [self.delegate drawingView:self willBeginDrawUsingTool:self.currentTool];
+    }
+
+    
+    
     // make sure a point is recorded
     [self touchesMoved:touches withEvent:event];
     
