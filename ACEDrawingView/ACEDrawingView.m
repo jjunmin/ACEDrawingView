@@ -45,18 +45,15 @@
 }
 
 @property (nonatomic, strong) NSMutableArray *pathArray;
-
 @property (nonatomic, strong) NSMutableArray *redoStates;
 @property (nonatomic, strong) NSMutableArray *undoStates;
 
 @property (nonatomic, strong) id<ACEDrawingTool> currentTool;
 @property (nonatomic, strong) UIImage *image;
-
 @property (nonatomic, strong) ACEDrawingLabelView *draggableTextView;
 @end
 
 #pragma mark -
-
 @implementation ACEDrawingView
 
 - (id)initWithFrame:(CGRect)frame
@@ -297,6 +294,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+<<<<<<< 6da7b3341bbc10a801e252bc739d9c309a002281
     if (self.draggableTextView.isEditing && self.drawTool != ACEDrawingToolTypeDraggableText) {
         [self.draggableTextView hideEditingHandles];
     }
@@ -333,6 +331,9 @@
         [self.delegate drawingView:self willBeginDrawUsingTool:self.currentTool];
     }
 }
+=======
+  }
+>>>>>>> hi
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -370,6 +371,40 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+    if (self.textView && !self.textView.hidden) {
+        [self commitAndHideTextEntry];
+        return;
+    }
+    
+    // add the first touch
+    UITouch *touch = [touches anyObject];
+    previousPoint1 = [touch previousLocationInView:self];
+    currentPoint = [touch locationInView:self];
+    
+    // init the bezier path
+    self.currentTool = [self toolWithCurrentSettings];
+    self.currentTool.lineWidth = self.lineWidth;
+    self.currentTool.lineColor = self.lineColor;
+    self.currentTool.lineAlpha = self.lineAlpha;
+    
+    if ([self.currentTool class] == [ACEDrawingTextTool class]) {
+        [self initializeTextBox:currentPoint WithMultiline:NO];
+    } else if([self.currentTool class] == [ACEDrawingMultilineTextTool class]) {
+        [self initializeTextBox:currentPoint WithMultiline:YES];
+    } else {
+        [self.pathArray addObject:self.currentTool];
+        
+        [self.currentTool setInitialPoint:currentPoint];
+    }
+    
+    // call the delegate
+    if ([self.delegate respondsToSelector:@selector(drawingView:willBeginDrawUsingTool:)]) {
+        [self.delegate drawingView:self willBeginDrawUsingTool:self.currentTool];
+    }
+
+    
+    
     // make sure a point is recorded
     [self touchesMoved:touches withEvent:event];
     
