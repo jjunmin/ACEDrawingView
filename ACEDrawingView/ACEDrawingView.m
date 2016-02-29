@@ -371,7 +371,11 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
+    UITouch *touch = [touches anyObject];
+    previousPoint1 = [touch previousLocationInView:self];
+    currentPoint = [touch locationInView:self];
+
+    if (currentPoint.y == previousPoint1.y){
     if (self.textView && !self.textView.hidden) {
         [self commitAndHideTextEntry];
         return;
@@ -422,6 +426,7 @@
         }
     } else {
         [self finishDrawing];
+    }
     }
 }
 
