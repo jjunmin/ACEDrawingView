@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+<<<<<<< HEAD
 <<<<<<< e91d62f7ddcc3f35531c9ee063b1f468ab0fd7a1
 		140DDF81FBD5EBE8EF7826AC /* libPods-ACEDrawingViewDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EFFBBC0CDE03617564D8F48 /* libPods-ACEDrawingViewDemo.a */; };
 		50F58C571D7F0FCF0050A4A0 /* ACEDrawingViewTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F58C561D7F0FCF0050A4A0 /* ACEDrawingViewTest.m */; };
@@ -14,6 +15,10 @@
 		62B998F31C7AFD5400DFB5A6 /* SDMiSaeng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */; };
 		62B998F41C7AFD5D00DFB5A6 /* SDMiSaeng.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */; };
 >>>>>>> use custom font
+=======
+		62B998F31C7AFD5400DFB5A6 /* SDMiSaeng.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */; };
+		62B998F41C7AFD5D00DFB5A6 /* SDMiSaeng.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */; };
+>>>>>>> a6626289e6c6d24e2483d603f909f7bc4121ec00
 		6D796B7B19184BBA0045456F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D796B7A19184BBA0045456F /* CoreText.framework */; };
 		7B5AD3FB169A072800904C6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5AD3FA169A072800904C6B /* UIKit.framework */; };
 		7B5AD3FD169A072800904C6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5AD3FC169A072800904C6B /* Foundation.framework */; };
@@ -41,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+<<<<<<< HEAD
 <<<<<<< e91d62f7ddcc3f35531c9ee063b1f468ab0fd7a1
 		0EFFBBC0CDE03617564D8F48 /* libPods-ACEDrawingViewDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACEDrawingViewDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F58C4C1D7F0F4B0050A4A0 /* ACEDrawingViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ACEDrawingViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +55,9 @@
 =======
 		62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDMiSaeng.ttf; sourceTree = "<group>"; };
 >>>>>>> use custom font
+=======
+		62B998F21C7AFD4200DFB5A6 /* SDMiSaeng.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SDMiSaeng.ttf; sourceTree = "<group>"; };
+>>>>>>> a6626289e6c6d24e2483d603f909f7bc4121ec00
 		6D796B7A19184BBA0045456F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		7B5AD3F6169A072800904C6B /* ACEDrawingViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACEDrawingViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B5AD3FA169A072800904C6B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
